@@ -2,6 +2,11 @@
 $(shell touch .env)
 include .env
 
+#AWS ECR Settings
+DOCKER_REGISTRY ?= 695807466803.dkr.ecr.eu-west-1.amazonaws.com
+AWS_ACCOUNT_ID ?= 695807466803
+DOCKER_LOGIN_EXPRESSION := eval $$(aws ecr get-login --registry-ids $(AWS_ACCOUNT_ID))
+
 # Project variables
 PROJECT_NAME ?= microtrader
 ORG_NAME ?= dockerproductionaws
